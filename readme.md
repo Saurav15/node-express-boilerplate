@@ -1,7 +1,7 @@
 # Node.js Express Boilerplate
 
 <p align="center">
-  <img src="your_logo_here.png" alt="Project Logo">
+  <img src="https://miro.medium.com/v2/resize:fit:365/1*Jr3NFSKTfQWRUyjblBSKeg.png" alt="Project Logo">
 </p>
 
 This Node.js Express Boilerplate is a comprehensive starting point for building robust web applications using Node.js and Express. It includes various features, routes, error handling, and utilities to help you kickstart your projects.
