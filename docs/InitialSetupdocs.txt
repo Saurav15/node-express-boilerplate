@@ -1,0 +1,80 @@
+// ESLINT and prettier setup:
+
+// Config setup:
+
+// Health-Check Route:
+
+
+// Error and response:
+1. Error or response can be thrown as follows:
+    -> res.status(404).send("page not found") // Error
+    -> res.send(data) // success
+    -> throw new Error("Opps Error") // Error => (goes inside errorMiddleWare) -> res.status().send() 
+    (Error middleware will only run for `throw new Error() `)
+
+2. Now we want every response to be in perticular format i.e. 
+    -> Error: {
+        statusCode: 404,
+        success: "Error",
+        data: null,
+        error: "Not found",
+    }
+    
+    -> Data: {
+        statusCode: 200,
+        success: "success",
+        data: data,
+        error: null,
+    }
+
+3. Now lets deal with error first:
+    -> Whenever an error is thrown using throw new Error() we need to catch it using an error middleware. If we dont then the whole errorstack is sent in response by default by express.
+        -> Here we log the error on the console.
+        -> create an error object with: error = {message: "asdA"}
+        -> Send the response from here using: res.status(statusCode).send(error)
+
+4. For perfect response:
+    -> When we have a proper data (without error) we send it using res.send(data)
+
+5. Now we need a fixed response structure for every response so we will have a response interceptor to intercept the response and structure it:
+    -> Format:
+        => Error: {
+            statusCode: 404,
+            success: "Error",
+            data: null,
+            error: "Not found",
+        }
+    
+        => Data: {
+            statusCode: 200,
+            success: "success",
+            data: data,
+            error: null,
+        }
+    -> We achieve it by updating the res.send() method.
+    -> It starts with checking if the statusCode is a error statuscode i.e. statuscode < 400
+    -> If yes then then the response object is prepared and data inside the send() is taken and put into the {data: null ,error: data}
+    -> If the statusCode > 400 soo the success response is prepared i.e. {data: data, error: null}
+
+6. Now as we can see that unless we do res.status() the status will always be 200 thus if the `throw new Error()` runs the statuscode here will be 200 i.e. the res.status(statusCode).send() will have status code of 200 always and thus the success response will be returned. (This should not happen)
+The Error() only takes one input i.e. message (new Error("Error occured")) but we also need to update the statusCode!
+Thus we will create our own Error function that will take 2 inputs:
+    -> Message (required)
+    -> statusCode (not required) (default= 500)
+    ->     
+        const error = new Error(message);
+        error.statusCode = statusCode;
+        return error;
+Soo now we will never use `throw new Error()` instead we will use `customException()`
+Inside the errorMiddleWare we will not use res.statusCode instead we will use err.statusCode.
+
+7. Now we can make it more better:
+ -> There can be many exception like BadRequestException (i.e. customException(message, badRequest statusCode)), UnauthorizedException, ForbiddenException, NotAcceptableException etc
+ -> We can create all the functions that automatically set the default statuscode to the given exception statusCode.
+
+
+ // Fluent-bit to send logs to the centralized logging system like newrelic.
+
+
+ // Setting up newRelic for viewing logs.
+

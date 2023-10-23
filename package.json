@@ -1,0 +1,41 @@
+{
+  "name": "shop-it-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "clear && nodemon src/app.js",
+    "lint:check": "eslint src/"
+  },
+  "huskey": {
+    "hooks": {
+      "pre-commit": "eslint src/"
+    }
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "chalk": "^5.3.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.1",
+    "morgan": "^1.10.0",
+    "newrelic": "^11.2.0",
+    "nodemon": "^3.0.1",
+    "response-time": "^2.3.2",
+    "validator": "^13.11.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.3"
+  }
+}
