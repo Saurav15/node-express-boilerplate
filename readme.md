@@ -8,6 +8,7 @@ This Node.js Express Boilerplate is a comprehensive starting point for building 
 
 ## Table of Contents
 - [Features](#features)
+- [Development Environment](#development-environment)
 - [Getting Started](#getting-started)
 - [Routes](#routes)
 - [Authentication](#authentication)
@@ -28,6 +29,23 @@ This Node.js Express Boilerplate is a comprehensive starting point for building 
 - **Logging**: Utilizes Winston and Morgan for comprehensive request and event logging.
 - **Database Integration**: Easily integrates with MongoDB for your data storage needs.
 - **Standard Response Schema**: All responses follow a consistent data structure for clarity and consistency.
+
+## Development Environment
+
+This project follows best practices for code quality and consistency through the use of ESLint and Prettier. Additionally, a pre-commit hook has been set up to automatically enforce linting and formatting rules prior to committing your code.
+
+### ESLint
+
+We use ESLint to analyze and enforce a consistent coding style in our project. ESLint helps identify and fix problems in your JavaScript or TypeScript code.
+
+### Prettier
+
+Prettier is an opinionated code formatter used to ensure consistent code style. It automatically formats your code to adhere to project standards.
+
+### Pre-Commit Hook
+
+A pre-commit hook has been configured to run ESLint and Prettier on your code changes before you commit. This ensures that your code always meets the project's coding standards and style.
+
 
 ## Getting Started
 
